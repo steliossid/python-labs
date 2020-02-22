@@ -69,10 +69,11 @@ def number_of_words(file):
     #                 c += 1
     digits_punct = digits + punctuation + "‘’“”—"
     remove_digits_punct = str.maketrans('', '', digits_punct)
-    c = Counter(word.translate(remove_digits_punct) for line in file for word in line.lower().split())
+    c = Counter(word.translate(remove_digits_punct) for line in file for word in line.lower().split()
+                if word.startswith("www") != True and word.startswith("http") != True)
 
-    # for key, value in c.items():
-    #     print(f"{key} ({value} occurrences)")
+    for key, value in c.items():
+        print(f"{key} ({value} occurrences)")
 
     print(f"The total number of words is {sum(c.values())}")
 
