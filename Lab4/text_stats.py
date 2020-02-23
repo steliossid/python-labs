@@ -1,3 +1,7 @@
+# Module that is responsible for analyzing and getting statistical results from shakespeare.txt file
+# about letter frequency, total number of words, number of unique words and five most common words
+# along with the words that most commonly follow them
+
 import sys
 import re
 import os.path
@@ -31,19 +35,21 @@ def output_log(line):
             output.write(line + "\n")
 
 
+# The idea is to replace everything that we don't need with a space character
+# and finally replace all spaces created with a simple space to get the words
 def data_processing(file):
     shakespeare = file.read()
     doc = shakespeare.replace('\n', ' ')
     doc = re.sub(r"\d", " ", doc)  # remove all digits
     doc = re.sub(r"[^\w\s]", " ", doc)  # remove punctuations
 
-    doc = re.sub(r"[_]", " ", doc)
-    doc = re.sub(r"\sd\s", " ", doc)
-    doc = re.sub(r"\ss\s", " ", doc)
-    doc = re.sub(r"\so\s", " ", doc)
+    doc = re.sub(r"[_]", " ", doc)  # remove special character
+    doc = re.sub(r"\sd\s", " ", doc)  # remove d from words (because of 'd words)
+    doc = re.sub(r"\ss\s", " ", doc)  # remove s from words (because of 's words)
+    doc = re.sub(r"\so\s", " ", doc)  # remove o from words (because of 'o words)
 
     doc = re.sub(r"\s+", " ", doc)  # substitute all spaces with a single space
-    doc = doc.lower()
+    doc = doc.lower()  # lowercase every word
     doc = doc.strip()
     return doc
 
@@ -79,14 +85,14 @@ def common_words(doc):
     title = "The five most common words are: "
     output_log(title)
     for key, value in five_most_common.items():
-        rx = r'%s (\w+ ){1}' % key
+        rx = r'%s (\w+){1}' % key
         prog = re.compile(rx)
         c2 = Counter(prog.findall(doc))
         three_most_common = dict(c2.most_common(3))
         content = f"{key} ({value} occurrences)"
         output_log(content)
-        for key, value in three_most_common.items():
-            content2 = f"-- {key}, {value}"
+        for key2, value2 in three_most_common.items():
+            content2 = f"-- {key2}, {value2}"
             output_log(content2)
 
 

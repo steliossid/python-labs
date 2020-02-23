@@ -32,22 +32,22 @@ The total number of words is 971363
 The number of unique words is 25830
 The five most common words are: 
 the (30125 occurrences)
--- king , 904
--- world , 483
--- duke , 422
+-- king, 904
+-- world, 483
+-- duke, 422
 and (28444 occurrences)
--- i , 1004
--- the , 921
--- to , 503
+-- i, 1004
+-- the, 921
+-- to, 503
 i (23874 occurrences)
--- am , 1960
--- ll , 1806
--- have , 1724
+-- am, 1960
+-- ll, 1806
+-- have, 1724
 to (21383 occurrences)
--- the , 1883
--- be , 1049
--- my , 600
+-- the, 1883
+-- be, 1049
+-- my, 600
 of (18839 occurrences)
--- the , 1641
--- my , 761
--- his , 636
+-- the, 1641
+-- my, 761
+-- his, 636
