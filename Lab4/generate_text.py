@@ -12,6 +12,7 @@ def main():
     with open(sys.argv[1], "r", encoding="utf8") as file:
         doc = text_stats.data_processing(file)
     sentence = generate_random_sentence(doc)
+    print(len(sentence.split()))
     print(sentence)
 
 
@@ -40,6 +41,8 @@ def generate_random_sentence(doc):
 
 
 if __name__ == '__main__':
+    # 2500 words takes 39.88 sec
+    # 500 words takes 11.58 sec
     start_time = time.time()
     main()
     passed_time = time.time() - start_time
