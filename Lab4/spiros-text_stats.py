@@ -78,6 +78,16 @@ def number_of_unique_words(doc):
     output_log(content)
 
 
+def find_successors(text, word):
+    """argument text: a string text to look into
+    argument word: a word of the text to find the next words
+    return: a dictionary with the next possible words after the given word in the text"""
+    rx = r'%s (\w+ ){1}' % word
+    prog = re.compile(rx)
+    possible_words = Counter(prog.findall(text))
+    return possible_words
+
+
 def common_words(doc):
     words = doc.split()
     c = Counter(words)
@@ -85,9 +95,7 @@ def common_words(doc):
     title = "The five most common words are: "
     output_log(title)
     for key, value in five_most_common.items():
-        rx = r'%s (\w+){1}' % key
-        prog = re.compile(rx)
-        c2 = Counter(prog.findall(doc))
+        c2 = find_successors(doc, key)
         three_most_common = dict(c2.most_common(3))
         content = f"{key} ({value} occurrences)"
         output_log(content)
