@@ -1,0 +1,15 @@
+QUESTION: In what way did you "clean up" or divide up the text into words (in the program; the text files should be left unaffected)? 
+This does not have to be perfect in any sense, but it should at least avoid counting "lord", "Lord" and "lord." as different words.
+
+ANSWER: The data clean up and the separation of the text into words happens at the data_proccessing function in text_stats.py. Our goal is to clean the text and have a string with the text words and a single space character between these words. First of all, the function read sthe data from the text file and saves it in to a variable. Then the function replaces every new line with a single space, remove all digits and punctuations. Then it removes single characters like s, d and o (probably of words like Bill's for example). Then it substitutes multiple space characters with just one. Finally, it makes every character of every word lowercase and removing leading and trailing whitespaces with split().
+
+
+
+QUESTION: Which data structures have you used (such as lists, tuples, dictionaries, sets, ...)? 
+Why does that choice make sense? 
+You do not have to do any extensive research on the topics, or try to find exotic modern data structures, but you should reflect on which of the standard data types (or variants thereof) make sense. If you have tried some other solution and updated your code later on, feel free to discuss the effects!
+
+ANSWER: The data structures used where tuples and dictionaries. We use tuples instead of lists because it's much faster. Dictionaries where used in order to iterate through the keys (words) and the values (number of occurances) of the most common words. 
+
+
+
