@@ -62,7 +62,7 @@ def data_processing(file):
     return doc
 
 
-def letter_frequency(doc):
+def print_letter_frequency(doc):
     """
     Calculates how many times each letter appears in the text
 
@@ -78,7 +78,7 @@ def letter_frequency(doc):
         output_log(content)
 
 
-def number_of_words(doc):
+def print_number_of_words(doc):
     """
     Calculates how many words there are in the text in total
 
@@ -91,7 +91,7 @@ def number_of_words(doc):
     output_log(content)
 
 
-def number_of_unique_words(doc):
+def print_number_of_unique_words(doc):
     """
     Calculates how many unique words there are in the text
 
@@ -114,12 +114,20 @@ def find_successors(text, word):
     Returns:
     possible_words (dict): The next possible words with their frequency in a dictionary
     """
+    """
+    seen = []
+    for i in range(len...)
+      word = ...
+      next = ...
+      if word in seen:
+        ...
+    """
     rx = r'%s (\w+ ){1}' % word
     prog = re.compile(rx)
     possible_words = Counter(prog.findall(text))
     return possible_words
 
-def common_words(doc):
+def print_common_words(doc):
     """
     Finds the five most common words and the three most common successors of these five words.
 

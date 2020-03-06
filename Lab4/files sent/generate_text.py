@@ -21,7 +21,7 @@ def give_next_word(possible_words):
     Returns:
     nxt_word (str): The chosen next word
     """
-    possible_words = collections.OrderedDict(possible_words)  # keep the order of the dictionary
+    # possible_words = collections.OrderedDict(possible_words)  # keep the order of the dictionary
     word_occ = np.fromiter(possible_words.values(), dtype=float)
     prob_occ = word_occ / sum(word_occ)  # the probabilities of each word to be after
     ref_dict = dict(zip(range(1, len(possible_words) + 1), possible_words.keys()))
