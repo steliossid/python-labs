@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import numpy as np
 import time
 import sys
@@ -21,7 +22,8 @@ def give_next_word(possible_words):
     Returns:
     nxt_word (str): The chosen next word
     """
-    # possible_words = collections.OrderedDict(possible_words)  # keep the order of the dictionary
+    
+    possible_words = collections.OrderedDict(possible_words)
     word_occ = np.fromiter(possible_words.values(), dtype=float)
     prob_occ = word_occ / sum(word_occ)  # the probabilities of each word to be after
     ref_dict = dict(zip(range(1, len(possible_words) + 1), possible_words.keys()))
@@ -44,15 +46,21 @@ def generate_random_sentence(doc):
     max_wrds = int(sys.argv[3])
     current_word = sys.argv[2]
     gen_text = current_word
-    possible_words = [0, 0]
+    dctseenwrds ={}
     words = doc.split()
-
     if current_word in words:
+        possible_words =  text_stats.find_successors(doc, current_word)
+        dctseenwrds[current_word] = possible_words
         while len(possible_words) >= 1 and ith_word < max_wrds:
-            possible_words = text_stats.find_successors(doc, current_word)
-            nxt = give_next_word(possible_words)
-            gen_text = gen_text + " " + nxt[:-1]
-            current_word = nxt[:-1]
+            if current_word in dctseenwrds.keys():
+                nxtword = give_next_word(dctseenwrds[current_word]) 
+            else:
+                possible_words = text_stats.find_successors(doc, current_word)
+                nxtword = give_next_word(possible_words) 
+                dctseenwrds[current_word] = possible_words
+            
+            gen_text = gen_text + " " + nxtword[:-1]
+            current_word = nxtword[:-1]
             ith_word += 1
 
     return gen_text

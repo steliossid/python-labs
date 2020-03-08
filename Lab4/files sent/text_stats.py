@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import re
 import os.path
@@ -9,13 +10,13 @@ def main():
         if os.path.isfile(sys.argv[1]):
             with open(sys.argv[1], "r", encoding="utf8") as file:
                 doc = data_processing(file)
-            letter_frequency(doc)
+            print_letter_frequency(doc)
             print("\n")
-            number_of_words(doc)
+            print_number_of_words(doc)
             print("\n")
-            number_of_unique_words(doc)
+            print_number_of_unique_words(doc)
             print("\n")
-            common_words(doc)
+            print_common_words(doc)
         else:
             print("The file does not exist!")
             sys.exit(1)
@@ -113,14 +114,6 @@ def find_successors(text, word):
 
     Returns:
     possible_words (dict): The next possible words with their frequency in a dictionary
-    """
-    """
-    seen = []
-    for i in range(len...)
-      word = ...
-      next = ...
-      if word in seen:
-        ...
     """
     rx = r'%s (\w+ ){1}' % word
     prog = re.compile(rx)
